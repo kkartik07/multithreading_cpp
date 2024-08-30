@@ -32,6 +32,11 @@ int main(){
 
     cout<<"After creating thread"<<endl;
 
-    t1.join();
+    // this is done to prevent errors,
+    // check if the thread is joinable 
+    // as thread can be joined multiple times in code by mistake causing system error
+    if(t1.joinable()) t1.join();
+
+    cout<<"This gets printed after t1 finishes the job, as t1.join means main waits till that line"<<endl;
     return 0;
 }
